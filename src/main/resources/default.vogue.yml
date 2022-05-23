@@ -1,0 +1,19 @@
+packageRules:
+  -
+    package: com.mx.*
+    rules:
+      major:
+        requireLatest: true
+      minor:
+        requireLatest: true
+      patch:
+        requireLatest: true
+  -
+    package: com.github.mxenabled.*
+    rules:
+      major:
+        requireLatest: true
+      minor:
+        requireLatest: true
+      patch:
+        requireLatest: true

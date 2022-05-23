@@ -1,0 +1,16 @@
+[36mUp To Date:
+[0m - [32mcom.mx.coppuccino:com.mx.coppuccino.gradle.plugin[0m [[32m0.4.3[0m]
+ - [32mcom.mx.path.api.connect:messaging[0m [[32m1.3.1[0m]
+
+[36mWarnings (should be upgraded ASAP):
+[0m[32mMAJOR[0m version upgrades available:
+ - [33mio.freefair.lombok:io.freefair.lombok.gradle.plugin[0m [[32m5.2.1[0m -> [32m6.3.0[0m]
+
+
+[36mErrors (must be upgraded)
+[0m[32mMINOR[0m version upgrades available:
+ - [31morg.slf4j:slf4j-simple[0m [[32m1.7.30[0m -> [32m1.18.2[0m]
+
+[32mPATCH[0m version upgrades available:
+ - [31mio.spring.dependency-management:io.spring.dependency-management.gradle.plugin[0m [[32m1.0.10-RELEASE[0m -> [32m1.0.11-RELEASE[0m]
+

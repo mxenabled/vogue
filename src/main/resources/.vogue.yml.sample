@@ -1,0 +1,22 @@
+defaultRules:
+  major:
+    maxDiff: 1
+  minor:
+    requireLatest: true
+  patch:
+    requireLatest: true
+
+packageRules:
+  -
+    package: com.mx.web
+    suppressUntil: 2022-03-01
+    projectIssue: https://github.com/mxenabled/vogue/issues/1
+  -
+    package: com.mx.*
+    rules:
+      major:
+        requireLatest: true
+      minor:
+        requireLatest: true
+      patch:
+        requireLatest: true

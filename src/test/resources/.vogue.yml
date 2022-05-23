@@ -1,0 +1,25 @@
+defaultRules:
+  major:
+    maxDiff: 1
+  minor:
+    maxDiff: 2
+
+
+packageRules:
+  -
+    package: "com.mx.*"
+    rules:
+      major:
+        requireLatest: true
+      minor:
+        maxDiff: 2
+      patch:
+        maxDiff: 3
+
+  -
+    package: "com.google.code.gson.*"
+    rules:
+      major:
+        maxDiff: 1
+      patch:
+        maxDiff: 0
