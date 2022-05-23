@@ -1,7 +1,5 @@
 pluginManagement {
   repositories {
-    maven { url "https://artifactory.internal.mx:443/maven-local" }
-    maven { url "https://artifactory.internal.mx:443/gradle-local" }
     gradlePluginPortal()
     mavenCentral()
     mavenLocal()
@@ -9,4 +7,4 @@ pluginManagement {
   }
 }
 
-rootProject.name = 'vogue'
+rootProject.name = "vogue"

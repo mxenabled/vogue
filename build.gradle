@@ -4,17 +4,14 @@ plugins {
   id "java"
   id "maven-publish"
   id "java-gradle-plugin"
-  id "com.jfrog.artifactory" version "4.28.0"
   id "org.jetbrains.kotlin.jvm" version "1.6.10"
 }
 
 group "com.mx.vogue"
-version "0.5.2"
+version "1.0.0"
 sourceCompatibility = 1.8
 
 repositories {
-  maven { url "https://artifactory.internal.mx:443/maven-local" }
-  maven { url "https://artifactory.internal.mx:443/gradle-local" }
   mavenCentral()
   mavenLocal()
   gradlePluginPortal()
@@ -44,6 +41,10 @@ gradlePlugin {
       id = group
       implementationClass = "com.mx.vogue.VoguePlugin"
     }
+    vogueJitPackPlugin {
+      id = "com.github.mxenabled.vogue"
+      implementationClass = "com.mx.vogue.VoguePlugin"
+    }
   }
 }
 
@@ -68,36 +69,6 @@ sourceSets {
 }
 
 test { useJUnitPlatform() }
-
-artifactoryPublish { dependsOn jar }
-
-artifactory {
-  contextUrl = "https://artifactory.internal.mx:443"
-  publish {
-    repository {
-      repoKey = "gradle-local"
-      username = "gradle-write"
-      password = System.getenv("GRADLE_ARTIFACTORY_API_KEY")
-      maven = true
-    }
-    defaults {
-      publications("mavenJava")
-      invokeMethod("publications", publishing.publications.names.toArray())
-    }
-  }
-  resolve {
-    repository {
-      repoKey = "maven-local"
-      username = "maven-read"
-      maven = true
-    }
-  }
-}
-
-artifactoryPublish {
-  contextUrl = "https://artifactory.internal.mx:443"
-  dependsOn jar
-}
 
 wrapper {
   gradleVersion = "7.4.1"
