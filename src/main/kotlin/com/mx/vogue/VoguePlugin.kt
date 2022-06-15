@@ -63,7 +63,7 @@ class VoguePlugin : Plugin<Project> {
 
       // If this is configured with Coppuccino, let's add our check to the list.
       if (project.tasks.findByName("check") != null) {
-        project.tasks.getByName("check").finalizedBy("dependencyUpdates")
+        project.tasks.getByName("check").finalizedBy("vogueReport")
       }
 
       project.tasks.named("vogueReport")
