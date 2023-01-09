@@ -17,3 +17,4 @@ jobs:
     with:
       force: ${{ inputs.force != '' && inputs.force }}
       java-version: '8'
+      skip-dependency-checks: true

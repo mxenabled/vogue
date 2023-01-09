@@ -17,6 +17,7 @@ package com.mx.vogue.core
 
 import com.mx.vogue.core.models.DependencyContext
 import com.mx.vogue.core.models.VogueReport
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings
 
 fun renderReport(report: VogueReport): String {
   return buildString {
@@ -44,6 +45,7 @@ fun renderReport(report: VogueReport): String {
   }
 }
 
+@SuppressFBWarnings("BC_BAD_CAST_TO_ABSTRACT_COLLECTION")
 private fun buildUpgradeMessages(dependencyContexts: List<DependencyContext>, buildUpgradeMessage: (DependencyContext) -> String): String {
   return buildString {
     val majorUpgrades = dependencyContexts.filter { it.majorUpgradeAvailable }

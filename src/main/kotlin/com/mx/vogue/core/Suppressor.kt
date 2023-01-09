@@ -39,7 +39,7 @@ class Suppressor {
       val artifact = "${it.versionsPluginDependency.group}:${it.versionsPluginDependency.name}"
       println("${green("Suppress")} ${yellow(artifact)}? [Y/n]")
 
-      if (confirmed(readLine()!!.lowercase())) {
+      if (confirmed(readLine()!!)) {
         handleUserSuppression(config, artifact)
       } else {
         println(cyan("Skipping.\n"))
@@ -54,8 +54,9 @@ class Suppressor {
     packageRule.suppressUntil = suppressUntil
     config.packageRules!!.add(packageRule)
   }
+
   private fun confirmed(input: String): Boolean {
-    return input.isBlank() || input == "y"
+    return input.isBlank() || input.lowercase() == "y"
   }
 
   @Suppress("LoopWithTooManyJumpStatements")
@@ -68,7 +69,7 @@ class Suppressor {
     val defaultSuppressionDate = LocalDate.now().plusDays(DEFAULT_SUPPRESSION_DAYS).format(DATE_FORMAT)
     do {
       println("\n${green("Suppress until")}? [${yellow("Default: $defaultSuppressionDate")}]")
-      val suppressUntil = readLine()!!.lowercase()
+      val suppressUntil = readLine()!!
       if (confirmed(suppressUntil)) {
         // The user is happy with the default suppression we suggested. Let's use it.
         appendSuppression(config, artifact, defaultSuppressionDate)

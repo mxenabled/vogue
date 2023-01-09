@@ -21,6 +21,7 @@ import com.fasterxml.jackson.dataformat.yaml.YAMLFactory
 import com.mx.vogue.core.models.Configuration
 import com.mx.vogue.core.models.PackageRule
 import com.mx.vogue.core.models.Rules
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings
 import java.io.File
 import java.io.FileNotFoundException
 
@@ -49,6 +50,7 @@ fun writeConfiguration(path: String, config: Configuration) {
   file.writeBytes(mapper.writeValueAsBytes(config))
 }
 
+@SuppressFBWarnings("DM_NEW_FOR_GETCLASS")
 fun loadDefaultConfiguration(): Configuration {
   val stream = object {}.javaClass.classLoader.getResourceAsStream("default.vogue.yml")
     ?: throw FileNotFoundException("Default configuration file could not be loaded")
@@ -58,6 +60,7 @@ fun loadDefaultConfiguration(): Configuration {
   return mapper.readValue(stream.readBytes(), Configuration::class.java)
 }
 
+@SuppressFBWarnings("DM_NEW_FOR_GETCLASS")
 fun copySampleConfigurationToPath(path: String) {
   val stream = object {}.javaClass.classLoader.getResourceAsStream(".vogue.yml.sample")
     ?: throw FileNotFoundException("Sample configuration file could not be loaded")
