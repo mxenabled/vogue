@@ -100,6 +100,7 @@ packageRules:
 Occasionally you might need to suppress a dependency violation so that your CI/CD pipeline will pass (if you have Vogue configured as a required step).
 
 Running `vogueSuppress` will walk you through your dependency violations and allow you to suppress errors for a given time range (3 months max).
+
 ```shell
 $ ./gradlew vogueSuppress
 ```

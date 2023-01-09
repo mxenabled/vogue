@@ -153,7 +153,10 @@ class ReporterTest extends Specification {
 
     subject = new Reporter(new Configuration().tap {
       defaultRules = new Rules().tap {
-        major = new Rule().tap {requireLatest = true } }
+        major = new Rule().tap {
+          requireLatest = true
+        }
+      }
       packageRules = new ArrayList<>().tap {
         add(buildPackageRule("io.freefair.lombok", suppressUntil))
       }

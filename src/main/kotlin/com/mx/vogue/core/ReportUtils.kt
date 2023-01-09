@@ -21,6 +21,7 @@ import com.mx.vogue.core.models.DependencyContext
 import com.mx.vogue.core.models.PackageRule
 import com.mx.vogue.core.models.VersionsPluginDependency
 import com.mx.vogue.core.models.VogueReport
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings
 import java.time.Duration
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
@@ -36,10 +37,12 @@ fun isViolation(dependencyContext: DependencyContext): Boolean {
     dependencyContext.maxPatchVersionExceeded
 }
 
+@SuppressFBWarnings("BC_BAD_CAST_TO_ABSTRACT_COLLECTION")
 fun getWarnings(report: VogueReport): List<DependencyContext> {
   return report.outdated.filter { !isViolation(it) }
 }
 
+@SuppressFBWarnings("BC_BAD_CAST_TO_ABSTRACT_COLLECTION")
 fun getViolations(report: VogueReport): List<DependencyContext> {
   return report.outdated.filter { isViolation(it) }
 }
@@ -48,6 +51,7 @@ fun getPackage(versionsPluginDependency: VersionsPluginDependency): String {
   return "${versionsPluginDependency.group}:${versionsPluginDependency.name}"
 }
 
+@SuppressFBWarnings("BC_BAD_CAST_TO_ABSTRACT_COLLECTION")
 fun getPackageRule(versionsPluginDependency: VersionsPluginDependency, packageRules: List<PackageRule>): PackageRule? {
   return packageRules.firstOrNull {
     Regex(it.`package`).containsMatchIn(getPackage(versionsPluginDependency))
