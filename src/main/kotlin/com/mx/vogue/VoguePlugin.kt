@@ -58,6 +58,7 @@ class VoguePlugin : Plugin<Project> {
 
         if (dependenciesExtension.excludePreReleaseVersions) {
           it.rejectVersionIf { selection -> selection.candidate.version.lowercase().endsWith("pre") }
+          it.rejectVersionIf { selection -> selection.candidate.version.lowercase().contains("-rc.") }
         }
       }
 
