@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.0.3](https://github.com/mxenabled/vogue/compare/1.0.2...1.0.3) (2023-04-15)
+
+
+### Bug Fixes
+
+* treat -rc. versions as pre-release ([34db0e0](https://github.com/mxenabled/vogue/commit/34db0e09493f16cb2b81f24e84cc84d24d7e7a66))
+* update dependencies and fix violations ([2821e11](https://github.com/mxenabled/vogue/commit/2821e11a9a911938256d1e64b217c22a5bcd7697))
+
 ## [1.0.2](https://github.com/mxenabled/vogue/compare/1.0.1...1.0.2) (2022-12-22)
 
 
