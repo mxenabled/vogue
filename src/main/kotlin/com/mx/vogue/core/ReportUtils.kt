@@ -14,6 +14,7 @@
  * limitations under the License.
  */
 @file:Suppress("TooManyFunctions")
+
 package com.mx.vogue.core
 
 import com.mx.vogue.core.exceptions.VogueProcessingException
@@ -51,7 +52,6 @@ fun getPackage(versionsPluginDependency: VersionsPluginDependency): String {
   return "${versionsPluginDependency.group}:${versionsPluginDependency.name}"
 }
 
-@SuppressFBWarnings("BC_BAD_CAST_TO_ABSTRACT_COLLECTION")
 fun getPackageRule(versionsPluginDependency: VersionsPluginDependency, packageRules: List<PackageRule>): PackageRule? {
   return packageRules.firstOrNull {
     Regex(it.`package`).containsMatchIn(getPackage(versionsPluginDependency))
@@ -76,7 +76,7 @@ fun filterStaleSuppressions(packageRules: List<PackageRule>?): List<PackageRule>
   }.toList()
 }
 
-@Suppress("MaxLineLength")
+@Suppress("ktlint:standard:max-line-length")
 fun reportStaleSuppressions(packageRules: List<PackageRule>?) {
   if (packageRules == null) {
     return
@@ -101,7 +101,7 @@ fun reportStaleSuppressions(packageRules: List<PackageRule>?) {
   }
 }
 
-@Suppress("MaxLineLength", "ThrowsCount", "ReturnCount")
+@Suppress("ktlint:standard:max-line-length", "ThrowsCount", "ReturnCount")
 fun shouldSuppressPackageRule(packageRule: PackageRule?): Boolean {
   if (packageRule == null) {
     return false

@@ -38,7 +38,7 @@ import org.gradle.api.Project
 import org.gradle.api.logging.LogLevel
 
 class VoguePlugin : Plugin<Project> {
-  @Suppress("MaxLineLength")
+  @Suppress("ktlint:standard:max-line-length")
   override fun apply(project: Project) {
     var dependenciesExtension = project.extensions.create("vogue", VogueDependenciesExtension::class.java)
 
