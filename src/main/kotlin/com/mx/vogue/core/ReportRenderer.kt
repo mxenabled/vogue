@@ -79,12 +79,12 @@ private fun buildUpgradeMessages(dependencyContexts: List<DependencyContext>, bu
   }
 }
 
-@Suppress("MaxLineLength")
+@Suppress("ktlint:standard:max-line-length")
 private fun buildWarningUpgradeMessage(dependencyContext: DependencyContext): String {
   return " - ${yellow(getPackage(dependencyContext.versionsPluginDependency))} [${green(dependencyContext.current.toString())} -> ${green(dependencyContext.latest.toString())}]\n"
 }
 
-@Suppress("MaxLineLength")
+@Suppress("ktlint:standard:max-line-length")
 private fun buildErrorUpgradeMessage(dependencyContext: DependencyContext): String {
   return " - ${red(getPackage(dependencyContext.versionsPluginDependency))} [${green(dependencyContext.current.toString())} -> ${green(dependencyContext.latest.toString())}]\n"
 }

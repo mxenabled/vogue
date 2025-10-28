@@ -1,15 +1,18 @@
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+
 plugins {
-  id "com.github.mxenabled.coppuccino" version "3.2.1"
+  id "com.github.mxenabled.coppuccino" version "4.4.2"
   id "groovy"
   id "java"
   id "maven-publish"
   id "java-gradle-plugin"
-  id "org.jetbrains.kotlin.jvm" version "1.6.10"
+  id "org.jetbrains.kotlin.jvm" version "2.1.0"
 }
 
 group "com.mx.vogue"
 version "1.0.3" // x-release-please-version
-sourceCompatibility = 1.8
+sourceCompatibility = JavaVersion.VERSION_11
+targetCompatibility = JavaVersion.VERSION_11
 
 repositories {
   mavenCentral()
@@ -19,22 +22,16 @@ repositories {
 }
 
 dependencies {
-  implementation "org.apache.bcel:bcel:[6.6.0,7.0[" // Security update
-  implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
+  implementation "org.apache.bcel:bcel:[6.11.0,7.0[" // Security update
+  implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:2.1.0"
   implementation "com.google.code.gson:gson:[2.0,3.0["
-  implementation "com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.13.3"
-  implementation "com.github.ben-manes.versions:com.github.ben-manes.versions.gradle.plugin:0.42.0"
-  implementation "com.github.spotbugs:spotbugs-annotations:4.7.2" // For annotating classes and methods to suppress SpotBugs violations
+  //upgrade to 2.15.0 after snakeyaml2
+  implementation "com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.14.3"
+  implementation "com.github.ben-manes.versions:com.github.ben-manes.versions.gradle.plugin:0.53.0"
+  implementation "com.github.spotbugs:spotbugs-annotations:4.9.8" // For annotating classes and methods to suppress SpotBugs violations
 
-  constraints {
-    implementation ("com.thoughtworks.xstream:xstream:1.4.19") { because "It resolves a bajillion CVEs" }
-  }
-
-  // Unit tests
-  testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:[5.8.0,5.9.0["
-  testImplementation "org.junit.jupiter:junit-jupiter-api:[5.8.0,5.9.0["
-  testImplementation "org.mockito:mockito-inline:[4.0,5.0["
-  testImplementation "org.spockframework:spock-core:2.2-M1-groovy-3.0"
+  api "org.mockito:mockito-inline:[4.0,5.0["
+  api "org.spockframework:spock-core:2.4-M6-groovy-3.0"
 }
 
 gradlePlugin {
@@ -50,20 +47,22 @@ gradlePlugin {
   }
 }
 
-compileKotlin {
-  kotlinOptions {
-    jvmTarget = "1.8"
-  } }
+kotlin {
+  compilerOptions {
+    jvmTarget = JvmTarget.JVM_11
+  }
+}
 
 compileTestKotlin {
   kotlinOptions {
-    jvmTarget = "1.8"
-  } }
+    jvmTarget = "11"
+  }
+}
 
 coppuccino {
   kotlin { enabled = true }
   coverage {
-    minimumCoverage = 0.70
+    minimumCoverage = 0.73
     excludes = [
       "com/mx/vogue/core/models/**"
     ]
@@ -71,12 +70,16 @@ coppuccino {
 }
 
 sourceSets {
-  test { groovy { srcDirs "src/test/groovy" } }
+  test {
+    groovy {
+      srcDirs "src/test/groovy"
+    }
+  }
 }
 
 test { useJUnitPlatform() }
 
 wrapper {
-  gradleVersion = "7.4.1"
+  gradleVersion = "7.6.3"
   distributionType = Wrapper.DistributionType.ALL
 }

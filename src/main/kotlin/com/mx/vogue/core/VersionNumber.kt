@@ -22,7 +22,7 @@ import org.gradle.internal.impldep.com.google.common.base.Objects
 import org.gradle.internal.impldep.com.google.common.collect.Ordering
 import java.util.Locale
 
-@Suppress("MaxLineLength")
+@Suppress("ktlint:standard:max-line-length")
 class VersionNumber private constructor(val major: Int, val minor: Int, val micro: Int, val patch: Int, val qualifier: String?, private val scheme: AbstractScheme) : Comparable<VersionNumber?> {
   constructor(major: Int, minor: Int, micro: Int, qualifier: String?) : this(major, minor, micro, 0, qualifier, DEFAULT_SCHEME)
   constructor(major: Int, minor: Int, micro: Int, patch: Int, qualifier: String?) : this(major, minor, micro, patch, qualifier, PATCH_SCHEME)
@@ -47,7 +47,9 @@ class VersionNumber private constructor(val major: Int, val minor: Int, val micr
     }
     return if (patch != other.patch) {
       patch - other.patch
-    } else Ordering.natural<Comparable<*>>().nullsLast<Comparable<*>?>().compare(toLowerCase(qualifier), toLowerCase(other.qualifier))
+    } else {
+      Ordering.natural<Comparable<*>>().nullsLast<Comparable<*>?>().compare(toLowerCase(qualifier), toLowerCase(other.qualifier))
+    }
   }
 
   override fun equals(other: Any?): Boolean {
