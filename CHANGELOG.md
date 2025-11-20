@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.0](https://github.com/mxenabled/vogue/compare/1.0.3...1.1.0) (2025-11-20)
+
+
+### Features
+
+* bump vulnerable dependencies ([adb121e](https://github.com/mxenabled/vogue/commit/adb121ee104394445103d3d7d0eea7b8433ccbb0))
+
 ## [1.0.3](https://github.com/mxenabled/vogue/compare/1.0.2...1.0.3) (2023-04-15)
 
 
