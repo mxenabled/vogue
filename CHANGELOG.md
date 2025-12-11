@@ -1,5 +1,16 @@
 # Changelog
 
+## [2.0.0](https://github.com/mxenabled/vogue/compare/1.1.0...2.0.0) (2025-12-11)
+
+
+### ⚠ BREAKING CHANGES
+
+* bump gradle, quality plugin and snakeyaml
+
+### Features
+
+* bump gradle, quality plugin and snakeyaml ([d5a1fed](https://github.com/mxenabled/vogue/commit/d5a1fede1c9d35bfc904344afeef4ae77e6724c8))
+
 ## [1.1.0](https://github.com/mxenabled/vogue/compare/1.0.3...1.1.0) (2025-11-20)
 
 
