@@ -1,5 +1,16 @@
 # Changelog
 
+## [3.0.0](https://github.com/mxenabled/vogue/compare/2.0.0...3.0.0) (2026-01-27)
+
+
+### ⚠ BREAKING CHANGES
+
+* bump checkstyle, gradle, java, mockito, spotless
+
+### Features
+
+* bump checkstyle, gradle, java, mockito, spotless ([6bd8518](https://github.com/mxenabled/vogue/commit/6bd851885c48141f33e83af32fab0f8ac50fdbdb))
+
 ## [2.0.0](https://github.com/mxenabled/vogue/compare/1.1.0...2.0.0) (2025-12-11)
 
 
