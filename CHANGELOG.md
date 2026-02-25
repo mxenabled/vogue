@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.0.1](https://github.com/mxenabled/vogue/compare/3.0.0...3.0.1) (2026-02-25)
+
+
+### Bug Fixes
+
+* revert java 21 upgrade ([78fd05f](https://github.com/mxenabled/vogue/commit/78fd05f066ae9b86718860c4f8ea13a7f721d4cc))
+
 ## [3.0.0](https://github.com/mxenabled/vogue/compare/2.0.0...3.0.0) (2026-01-27)
 
 
