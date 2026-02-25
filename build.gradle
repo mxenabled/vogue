@@ -3,7 +3,7 @@ import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 plugins {
   id "groovy"
   id "java"
-  id "com.github.mxenabled.coppuccino" version "6.+"
+  id "com.github.mxenabled.coppuccino" version "5.+"
   id "maven-publish"
   id "java-gradle-plugin"
   id "org.jetbrains.kotlin.jvm" version "2.1.0"
@@ -11,12 +11,8 @@ plugins {
 
 group "com.mx.vogue"
 version "3.0.0" // x-release-please-version
-
-java {
-  toolchain {
-    languageVersion = JavaLanguageVersion.of(21)
-  }
-}
+sourceCompatibility = JavaVersion.VERSION_17
+targetCompatibility = JavaVersion.VERSION_17
 
 repositories {
   mavenCentral()
@@ -31,8 +27,9 @@ dependencies {
   implementation "com.google.code.gson:gson:[2.0,3.0["
   implementation "com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:[2.20,3.0)"
   implementation "com.github.ben-manes.versions:com.github.ben-manes.versions.gradle.plugin:0.53.0"
+  implementation "com.github.spotbugs:spotbugs-annotations:4.9.8" // For annotating classes and methods to suppress SpotBugs violations
 
-  api "org.mockito:mockito-core:[5.21.0,6.0)"
+  api "org.mockito:mockito-inline:[5.0,6.0["
   api "org.spockframework:spock-core:2.4-M6-groovy-3.0"
 }
 
@@ -51,12 +48,12 @@ gradlePlugin {
 
 kotlin {
   compilerOptions {
-    jvmTarget = JvmTarget.JVM_21
+    jvmTarget = JvmTarget.JVM_17
   }
 }
 
 coppuccino {
-  kotlin { required = true }
+  kotlin { enabled = true }
   coverage {
     minimumCoverage = 0.73
     excludes = [
@@ -68,6 +65,6 @@ coppuccino {
 test { useJUnitPlatform() }
 
 wrapper {
-  gradleVersion = "8.14.3"
+  gradleVersion = "7.6.4"
   distributionType = Wrapper.DistributionType.ALL
 }
