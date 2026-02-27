@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.0.2](https://github.com/mxenabled/vogue/compare/3.0.1...3.0.2) (2026-02-27)
+
+
+### Bug Fixes
+
+* resolve snyk vulnerabilities ([f6143fe](https://github.com/mxenabled/vogue/commit/f6143fefb33610000d5fc274c03c3e0c6668d35d))
+
 ## [3.0.1](https://github.com/mxenabled/vogue/compare/3.0.0...3.0.1) (2026-02-25)
 
 
