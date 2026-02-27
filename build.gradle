@@ -1,48 +1,19 @@
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
+  id "com.github.mxenabled.coppuccino" version "6.+"
   id "groovy"
-  id "java"
-  id "com.github.mxenabled.coppuccino" version "5.+"
-  id "maven-publish"
   id "java-gradle-plugin"
+  id "maven-publish"
   id "org.jetbrains.kotlin.jvm" version "2.1.0"
 }
 
 group "com.mx.vogue"
 version "3.0.1" // x-release-please-version
-sourceCompatibility = JavaVersion.VERSION_17
-targetCompatibility = JavaVersion.VERSION_17
 
-repositories {
-  mavenCentral()
-  mavenLocal()
-  gradlePluginPortal()
-  maven { url "https://jitpack.io" }
-}
-
-dependencies {
-  implementation "org.apache.bcel:bcel:[6.11.0,7.0[" // Security update
-  implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:2.1.0"
-  implementation "com.google.code.gson:gson:[2.0,3.0["
-  implementation "com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:[2.20,3.0)"
-  implementation "com.github.ben-manes.versions:com.github.ben-manes.versions.gradle.plugin:0.53.0"
-  implementation "com.github.spotbugs:spotbugs-annotations:4.9.8" // For annotating classes and methods to suppress SpotBugs violations
-
-  api "org.mockito:mockito-inline:[5.0,6.0["
-  api "org.spockframework:spock-core:2.4-M6-groovy-3.0"
-}
-
-gradlePlugin {
-  plugins {
-    voguePlugin {
-      id = group
-      implementationClass = "com.mx.vogue.VoguePlugin"
-    }
-    vogueJitPackPlugin {
-      id = "com.github.mxenabled.vogue"
-      implementationClass = "com.mx.vogue.VoguePlugin"
-    }
+java {
+  toolchain {
+    languageVersion = JavaLanguageVersion.of(17)
   }
 }
 
@@ -62,7 +33,36 @@ coppuccino {
   }
 }
 
+repositories {
+  mavenCentral()
+  mavenLocal()
+  gradlePluginPortal()
+  maven { url "https://jitpack.io" }
+}
+
+dependencies {
+  implementation "com.google.code.gson:gson:[2.0,3.0)"
+  implementation "com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:[2.20,3.0)"
+  implementation "com.github.ben-manes.versions:com.github.ben-manes.versions.gradle.plugin:0.53.0"
+
+  testImplementation "org.mockito:mockito-inline:[5.0,6.0)"
+  testImplementation "org.spockframework:spock-core:2.4-M6-groovy-3.0"
+}
+
 test { useJUnitPlatform() }
+
+gradlePlugin {
+  plugins {
+    voguePlugin {
+      id = group
+      implementationClass = "com.mx.vogue.VoguePlugin"
+    }
+    vogueJitPackPlugin {
+      id = "com.github.mxenabled.vogue"
+      implementationClass = "com.mx.vogue.VoguePlugin"
+    }
+  }
+}
 
 wrapper {
   gradleVersion = "7.6.4"
