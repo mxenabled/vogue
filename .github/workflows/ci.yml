@@ -16,5 +16,5 @@ jobs:
     uses: mxenabled/path-tools/.github/workflows/ci.yml@master
     with:
       force: ${{ inputs.force != '' && inputs.force }}
-      java-version: '17'
+      java-version: '21'
       skip-dependency-checks: true
