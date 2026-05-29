@@ -1,5 +1,16 @@
 # Changelog
 
+## [4.0.0](https://github.com/mxenabled/vogue/compare/3.0.2...4.0.0) (2026-05-29)
+
+
+### ⚠ BREAKING CHANGES
+
+* bump gradle 8 java 21
+
+### Features
+
+* bump gradle 8 java 21 ([e7fca3a](https://github.com/mxenabled/vogue/commit/e7fca3acb221f3c99ddd06cf255c9d3ae846af43))
+
 ## [3.0.2](https://github.com/mxenabled/vogue/compare/3.0.1...3.0.2) (2026-02-27)
 
 
