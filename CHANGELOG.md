@@ -1,5 +1,12 @@
 # Changelog
 
+## [4.0.1](https://github.com/mxenabled/vogue/compare/4.0.0...4.0.1) (2026-06-01)
+
+
+### Bug Fixes
+
+* lock jackson dependency to current minor version ([d8e0779](https://github.com/mxenabled/vogue/commit/d8e077942986c7e2cc24279e4e632f212de1c185))
+
 ## [4.0.0](https://github.com/mxenabled/vogue/compare/3.0.2...4.0.0) (2026-05-29)
 
 
