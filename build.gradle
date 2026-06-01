@@ -37,12 +37,11 @@ repositories {
   mavenCentral()
   mavenLocal()
   gradlePluginPortal()
-  maven { url "https://jitpack.io" }
 }
 
 dependencies {
   implementation "com.google.code.gson:gson:[2.0,3.0)"
-  implementation "com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:[2.20,3.0)"
+  implementation "com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:[2.21.0,2.22.0)"
   implementation "com.github.ben-manes.versions:com.github.ben-manes.versions.gradle.plugin:0.53.0"
 
   testImplementation "org.mockito:mockito-core:[5.0,6.0)"
