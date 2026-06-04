@@ -16,12 +16,12 @@
 package com.mx.vogue.core
 
 import com.fasterxml.jackson.annotation.JsonInclude
-import com.fasterxml.jackson.databind.ObjectMapper
-import com.fasterxml.jackson.dataformat.yaml.YAMLFactory
 import com.mx.vogue.core.models.Configuration
 import com.mx.vogue.core.models.PackageRule
 import com.mx.vogue.core.models.Rules
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings
+import tools.jackson.databind.DeserializationFeature
+import tools.jackson.dataformat.yaml.YAMLMapper
 import java.io.File
 import java.io.FileNotFoundException
 
@@ -32,7 +32,9 @@ fun loadConfiguration(path: String): Configuration? {
     return null
   }
 
-  val mapper = ObjectMapper(YAMLFactory())
+  val mapper: YAMLMapper = YAMLMapper.builder()
+    .disable(DeserializationFeature.FAIL_ON_NULL_FOR_PRIMITIVES)
+    .build()
 
   val contents = file.readText(Charsets.UTF_8)
   if (contents.isEmpty()) {
@@ -45,8 +47,12 @@ fun loadConfiguration(path: String): Configuration? {
 fun writeConfiguration(path: String, config: Configuration) {
   val file = File(path)
 
-  val mapper = ObjectMapper(YAMLFactory())
-  mapper.setSerializationInclusion(JsonInclude.Include.NON_EMPTY)
+  val mapper = YAMLMapper.builder()
+    .changeDefaultPropertyInclusion { incl ->
+      incl.withValueInclusion(JsonInclude.Include.NON_EMPTY)
+    }
+    .disable(DeserializationFeature.FAIL_ON_NULL_FOR_PRIMITIVES)
+    .build()
   file.writeBytes(mapper.writeValueAsBytes(config))
 }
 
@@ -55,8 +61,12 @@ fun loadDefaultConfiguration(): Configuration {
   val stream = object {}.javaClass.classLoader.getResourceAsStream("default.vogue.yml")
     ?: throw FileNotFoundException("Default configuration file could not be loaded")
 
-  val mapper = ObjectMapper(YAMLFactory())
-  mapper.setSerializationInclusion(JsonInclude.Include.NON_EMPTY)
+  val mapper = YAMLMapper.builder()
+    .changeDefaultPropertyInclusion { incl ->
+      incl.withValueInclusion(JsonInclude.Include.NON_EMPTY)
+    }
+    .disable(DeserializationFeature.FAIL_ON_NULL_FOR_PRIMITIVES)
+    .build()
   return mapper.readValue(stream.readBytes(), Configuration::class.java)
 }
 

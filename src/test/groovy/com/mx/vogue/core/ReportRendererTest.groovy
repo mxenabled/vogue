@@ -11,11 +11,11 @@ class ReportRendererTest extends Specification {
     given:
     def report = new Reporter(new Configuration().tap {
       defaultRules = new Rules(
-          new Rule(1000, false),
-          new Rule(0, false),
-          new Rule(0, false),
-          new Rule(0, false)
-          )
+      new Rule(1000, false),
+      new Rule(0, false),
+      new Rule(0, false),
+      new Rule(0, false)
+      )
     }).generate("src/test/resources/report.json")
 
     when:
