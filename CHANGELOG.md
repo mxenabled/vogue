@@ -1,5 +1,16 @@
 # Changelog
 
+## [5.0.0](https://github.com/mxenabled/vogue/compare/4.0.1...5.0.0) (2026-07-09)
+
+
+### ⚠ BREAKING CHANGES
+
+* bump to Gradle 9.5.1 and Jackson 3
+
+### Features
+
+* bump to Gradle 9.5.1 and Jackson 3 ([e2a760c](https://github.com/mxenabled/vogue/commit/e2a760c4ce7286def2dd93d80fc6f77e2e516627))
+
 ## [4.0.1](https://github.com/mxenabled/vogue/compare/4.0.0...4.0.1) (2026-06-01)
 
 

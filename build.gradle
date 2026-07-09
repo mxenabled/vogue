@@ -9,7 +9,7 @@ plugins {
 }
 
 group "com.mx.vogue"
-version "4.0.1" // x-release-please-version
+version "5.0.0" // x-release-please-version
 
 java {
   toolchain {
